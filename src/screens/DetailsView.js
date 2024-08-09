@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet, ScrollView} from 'react-native';
+import {isTabletDevice} from "../utils/isTabletDevice";
 
 export const DetailsView = ({route}) => {
     const {item} = route.params;
@@ -8,42 +9,52 @@ export const DetailsView = ({route}) => {
         <ScrollView contentContainerStyle={styles.container}>
             <Text style={styles.title}>{item.name}</Text>
             <Text style={styles.description}>{item.data?.Description}</Text>
-            {/* Display more details if available */}
             {item.data ? (
-
-                <View style={styles.detailsContainer}>
-                    <>
-                        {item.data.color && (
-                            <View>
-                                <Text style={styles.detailsTitle}>Color:</Text>
-                                <Text style={styles.detailsText}>{item.data?.color}</Text>
-                            </View>
-                        )}
-                    </>
-                    <>
-                        {item.data.capacity && (
-                            <View>
-                                <Text style={styles.detailsTitle}>Capacity:</Text>
-                                <Text style={styles.detailsText}>{item.data?.capacity}</Text>
-                            </View>
-                        )}
-                    </>
-                    <>
-                        {item.data['capacity GB'] && (
-                            <View>
-                                <Text style={styles.detailsTitle}>Capacity:</Text>
-                                <Text style={styles.detailsText}>{item.data["capacity GB"]}{" "}GB</Text>
-                            </View>
-                        )}
-                    </>
-                    <>
-                        {item.data && (
-                            <View>
-                                <Text style={styles.detailsTitle}>All Description in JSON format:</Text>
-                                <Text style={styles.detailsText}>{JSON.stringify(item.data)}</Text>
-                            </View>
-                        )}
-                    </>
+                <View style={{ flexDirection: isTabletDevice()?'row':'column'}}>
+                    <View style={styles.detailsContainer}>
+                        <>
+                            {item.data.color && (
+                                <View>
+                                    <Text style={styles.detailsTitle}>Color:</Text>
+                                    <Text style={styles.detailsText}>{item.data?.color}</Text>
+                                </View>
+                            )}
+                        </>
+                        <>
+                            {item.data.capacity && (
+                                <View>
+                                    <Text style={styles.detailsTitle}>Capacity:</Text>
+                                    <Text style={styles.detailsText}>{item.data?.capacity}</Text>
+                                </View>
+                            )}
+                        </>
+                        <>
+                            {item.data['capacity GB'] && (
+                                <View>
+                                    <Text style={styles.detailsTitle}>Capacity:</Text>
+                                    <Text style={styles.detailsText}>{item.data["capacity GB"]}{" "}GB</Text>
+                                </View>
+                            )}
+                        </>
+                        <>
+                            {item.data && !isTabletDevice() && (
+                                <View >
+                                    <Text style={styles.detailsTitle}>All Description in JSON format:</Text>
+                                    <Text style={styles.detailsText}>{JSON.stringify(item.data)}</Text>
+                                </View>
+                            )}
+                        </>
+                    </View>
+                    {  isTabletDevice() &&
+                        <View style={styles.JsonDetailsContainer}>
+                            {item.data && (
+                                <View>
+                                    <Text style={styles.detailsTitle}>All Description in JSON format:</Text>
+                                    <Text style={styles.detailsText}>{JSON.stringify(item.data)}</Text>
+                                </View>
+                            )}
+                        </View>
+                    }
                 </View>
             ) : (
                 <Text style={styles.detailsText}>No data</Text>
@@ -70,10 +81,18 @@ const styles = StyleSheet.create({
         marginBottom: 16,
     },
     detailsContainer: {
-        marginTop: 16,
+        margin: 16,
         padding: 16,
         backgroundColor: '#f5f5f5',
         borderRadius: 8,
+        width: isTabletDevice()?'60%':'90%',
+    },
+    JsonDetailsContainer: {
+        margin: 10,
+        padding: 16,
+        backgroundColor: '#f5f5f5',
+        borderRadius: 8,
+        width:'35%',
     },
     detailsTitle: {
         fontSize: 18,

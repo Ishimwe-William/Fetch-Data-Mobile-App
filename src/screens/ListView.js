@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { View, FlatList, StyleSheet, ActivityIndicator } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, FlatList, StyleSheet, ActivityIndicator} from 'react-native';
 import axios from 'axios';
 import {ListItem} from "../components/ListItem";
+import {isTabletDevice} from "../utils/isTabletDevice";
 
-export const ListView = ({ navigation }) => {
+export const ListView = ({navigation}) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -22,17 +23,17 @@ export const ListView = ({ navigation }) => {
         }
     };
 
-    const renderItem = ({ item }) => (
+    const renderItem = ({item}) => (
         <ListItem
             item={item}
-            onPress={() => navigation.navigate('DetailsView', { item })}
+            onPress={() => navigation.navigate('DetailsView', {item})}
         />
     );
 
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color="#0000ff" />
+                <ActivityIndicator size="large" color="#0000ff"/>
             </View>
         );
     }
@@ -50,6 +51,7 @@ export const ListView = ({ navigation }) => {
 const styles = StyleSheet.create({
     listContainer: {
         padding: 16,
+        width: isTabletDevice()?'60%':'100%',
     },
     loadingContainer: {
         flex: 1,
