@@ -36,23 +36,23 @@ on different devices.
 
 #### In Android
 - ListView
-  - ![img.png](img.png) 
+  - ![img.png](ReadMe.images/img.png) 
 - DetailsView 
-  - ![img_1.png](img_1.png)
+  - ![img_1.png](ReadMe.images/img_1.png)
 
 
 - Landscape - ListView
-  - ![img_2.png](img_2.png) 
+  - ![img_2.png](ReadMe.images/img_2.png) 
 - Landscape - DetailsView
-  - ![img_3.png](img_3.png)
+  - ![img_3.png](ReadMe.images/img_3.png)
 
 #### In Web
 - ListView - Mobile L Dimensions
-  - ![img_4.png](img_4.png) 
+  - ![img_4.png](ReadMe.images/img_4.png) 
 - DetailsView - Mobile L Dimensions
-  - ![img_7.png](img_7.png)
+  - ![img_7.png](ReadMe.images/img_7.png)
   - 
 - ListView - Tablet Dimensions
-  - ![img_9.png](img_9.png)
+  - ![img_9.png](ReadMe.images/img_9.png)
 - DetailsView - Tablet Dimensions
-  - ![img_6.png](img_6.png)
+  - ![img_6.png](ReadMe.images/img_6.png)
