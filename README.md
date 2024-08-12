@@ -6,7 +6,7 @@
     - [DetailsView](#detailsview)
 - [Libraries](#libraries)
 - [Dimensions](#dimensions)
-- [Running App Screenshots](#running app screenshots)
+- [Running App Screenshots](#running-app-screenshots)
 
 ### Screens
 This is a React Native App with two screens:
